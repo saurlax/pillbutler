@@ -17,7 +17,7 @@ function Me() {
         <Space>
           <Avatar />
           <span style={{ color: "#ffffff", fontSize: "1rem" }}>
-            {user ? "************" + user.slice(12) : "未登录"}
+            {user ? "用户" + user.slice(16) : "未登录"}
           </span>
         </Space>
       </Card>
