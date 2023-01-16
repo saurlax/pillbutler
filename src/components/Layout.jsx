@@ -1,6 +1,8 @@
 import { NavBar, TabBar } from "antd-mobile";
 import {
+  AddSquareOutline,
   AppOutline,
+  CompassOutline,
   HistogramOutline,
   LocationFill,
   SetOutline,
@@ -19,14 +21,13 @@ function Layout() {
       icon: <AppOutline />,
     },
     {
-      key: "shop",
-      title: "商城",
-      icon: <ShopbagOutline />,
+      key: "discover",
+      title: "发现",
+      icon: <CompassOutline />,
     },
     {
-      key: "findbox",
-      title: "定位",
-      icon: <LocationFill />,
+      key: "add",
+      icon: <AddSquareOutline />,
     },
     {
       key: "statistics",
