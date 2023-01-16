@@ -2,8 +2,11 @@ import { Button, Card, Grid, PullToRefresh, Result, Space } from "antd-mobile";
 import { AddCircleOutline, SmileOutline } from "antd-mobile-icons";
 import { useNavigate } from "react-router-dom";
 import BoxItem from "../components/BoxItem";
-import box0 from "../assets/box0.png";
+import box0 from "../assets/0.png";
+import box1 from "../assets/1.png";
 import { useEffect, useState } from "react";
+
+const boxImg = [box0, box1];
 
 function Home() {
   const navigate = useNavigate();
@@ -33,7 +36,7 @@ function Home() {
             <div style={{ color: "var(--adm-color-white)" }}>
               <div>欢迎使用</div>
               <div>
-                <span style={{ fontSize: "1.4rem" }}>药管管</span>v0.2.0.30
+                <span style={{ fontSize: "1.4rem" }}>药管管</span>v0.3.0
               </div>
             </div>
           </Card>
@@ -48,7 +51,7 @@ function Home() {
                   return (
                     <BoxItem
                       name={box.name}
-                      image={box0}
+                      image={boxImg[box.type]}
                       key={box.name}
                       id={box._id}
                     />

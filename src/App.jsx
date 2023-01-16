@@ -15,7 +15,7 @@ import Shop from "./pages/Shop";
 import Statistics from "./pages/Statistics";
 import FindBox from "./pages/FindBox";
 import Add from "./pages/Add";
-import Discover from "./pages/discover";
+import Discover from "./pages/Discover";
 
 function App() {
   return (
