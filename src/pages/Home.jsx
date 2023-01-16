@@ -3,7 +3,6 @@ import { AddCircleOutline, SmileOutline } from "antd-mobile-icons";
 import { useNavigate } from "react-router-dom";
 import BoxItem from "../components/BoxItem";
 import box0 from "../assets/box0.png";
-import logo from "../assets/logo.png";
 import { useEffect, useState } from "react";
 
 function Home() {
