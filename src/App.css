@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --adm-color-primary: #168888 !important;
+}
+
+@keyframes page-in {}
