@@ -4,7 +4,7 @@ import App from "./App";
 import axios from "axios";
 import moment from "moment";
 
-window.serverUrl = "https://api.pillbutler.saurlax.com";
+window.serverUrl = "https://pillbutler.saurlax.com/api";
 
 moment.locale("zh-cn", {
   months:
