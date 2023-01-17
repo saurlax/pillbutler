@@ -6,6 +6,7 @@ import {
   Stepper,
   TextArea,
 } from "antd-mobile";
+import moment from "moment";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const hours = new Array(24).fill(null).map((value, index) => {
@@ -40,7 +41,7 @@ function EditPill() {
           brand: value.brand,
           remark: value.remark,
           amount: value.amount,
-          shelfLife: value.shelfLife.format("yyyy/MM/dd hh:mm:ss"),
+          shelfLife: moment(value.shelfLife).format("yyyy/MM/DD hh:mm:ss"),
         };
         console.log(await pushData(params.id, slot, params.index));
         navigate(`/manage/${params.id}`);

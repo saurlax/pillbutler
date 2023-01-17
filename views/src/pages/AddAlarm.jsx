@@ -67,7 +67,7 @@ function AddAlarm(props) {
         for (i = 0; i < 100; i++) {
           if (!alarm[i]) {
             slot.alarm[i] = {
-              time: new Date(
+              time: moment(
                 2000,
                 0,
                 1,

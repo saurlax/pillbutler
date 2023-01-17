@@ -9,6 +9,7 @@ import {
   Steps,
 } from "antd-mobile";
 import { FireFill, SmileOutline } from "antd-mobile-icons";
+import moment from "moment";
 import { useEffect, useState } from "react";
 
 function Statistics() {
@@ -62,11 +63,9 @@ function Statistics() {
             direction="vertical"
           >
             <Card title="用药情况">
-              <Space block direction="vertical" style={{width:'100%'}}>
+              <Space block direction="vertical" style={{ width: "100%" }}>
                 <div style={{}}>周用药量统计</div>
-                <Canvas
-                  pixelRatio={window.devicePixelRatio}
-                >
+                <Canvas pixelRatio={window.devicePixelRatio}>
                   <Chart data={datav}>
                     <Legend />
                     <Axis
@@ -117,7 +116,7 @@ function Statistics() {
                           .join(", ")}）`;
                         return (
                           <Steps.Step
-                            title={new Date(
+                            title={moment(
                               date.getTime() + dayCount * 86400000
                             ).format("yyyy年MM月dd日 D")}
                             description={
@@ -188,8 +187,8 @@ function Statistics() {
                     justify="center"
                   >
                     <div>今日已行走{data[0].steps}步</div>
-                    <div>距离{(data[0].steps * 0.00055).friendly()}公里</div>
-                    <div>消耗{(data[0].steps * 0.00004).friendly()}千卡</div>
+                    <div>距离{(data[0].steps * 0.00055).toFixed(2)}公里</div>
+                    <div>消耗{(data[0].steps * 0.00004).toFixed(2)}千卡</div>
                   </Space>
                 </Space>
               ) : null}

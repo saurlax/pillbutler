@@ -6,21 +6,10 @@ import { Map, Marker } from "react-amap";
 import { useParams } from "react-router-dom";
 
 function FindBox() {
-  const params = useParams();
   const [data, setData] = useState(null);
-  const [address, setAddress] = useState("加载中");
 
   useEffect(async () => {
     setData((await loadData())[0]);
-    if (data?.position) {
-      setAddress(
-        (
-          await axios.get(
-            `https://restapi.amap.com/v3/geocode/regeo?location=${data.position.lng},${data.position.lat}&key=61d307feb6a54ac53cf915549f0e879a`
-          )
-        ).data.regeocode.formatted_address
-      );
-    }
   }, []);
 
   return (
@@ -46,9 +35,6 @@ function FindBox() {
               }}
             >
               刷新
-            </List.Item>
-            <List.Item title="药盒所在位置">
-              {address == "" ? "未知地点" : address}
             </List.Item>
             <List.Item
               title="导航去这里"

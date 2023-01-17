@@ -9,6 +9,7 @@ import {
 } from "antd-mobile";
 import { SetOutline, SmileOutline } from "antd-mobile-icons";
 import { List } from "antd-mobile/es/components/list/list";
+import moment from "moment";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AlarmItem from "../components/AlarmItem";
@@ -79,7 +80,7 @@ function Manage() {
                       <Space wrap>
                         <Tag color="primary">剩余{slot?.pill?.amount}片药</Tag>
                         <Tag>
-                          将在{new Date(slot?.pill?.shelfLife).friendly()}过期
+                          {moment(slot?.pill?.shelfLife).calendar()}过期
                         </Tag>
                       </Space>
                     </JumboTabs.Tab>

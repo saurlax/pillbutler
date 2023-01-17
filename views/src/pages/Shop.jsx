@@ -88,10 +88,7 @@ function Shop() {
                         fontSize: "1rem",
                       }}
                     >
-                      ¥
-                      {(isNaN(drug.price)
-                        ? drug.price
-                        : drug.price.friendly()) ?? "?"}
+                      ¥{(isNaN(drug.price) ? drug.price : drug.price) ?? "?"}
                     </span>
                     <span
                       style={{
