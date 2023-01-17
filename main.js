@@ -1,4 +1,6 @@
+const fs = require("fs");
 const koa = require("koa");
+const cors = require("koa-cors");
 const router = require("koa-router");
 const static = require("koa-static");
 const bodyparser = require("koa-bodyparser");
@@ -71,6 +73,7 @@ route.get("/api/drug/:id", async (ctx) => {
   ctx.body = await Drug.findOne({ _id: ctx.params.id });
 });
 
+app.use(cors());
 app.use(new bodyparser({ strict: false }));
 app.use(async (ctx, next) => {
   try {
@@ -81,8 +84,16 @@ app.use(async (ctx, next) => {
     ctx.body = e.message;
   }
 });
-app.use(static("public"));
+
 app.use(route.routes()).use(route.allowedMethods());
+app.use(static("public"));
+app.use(async (ctx) => {
+  console.log(ctx.body, ctx.code);
+  if (!ctx.path.includes("/api") && ctx.body == null) {
+    ctx.type = "html";
+    ctx.body = fs.readFileSync("./public/index.html");
+  }
+});
 
 process.on("uncaughtException", (e) => {
   console.error(e);

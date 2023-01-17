@@ -792,13 +792,6 @@ base64-js@^1.3.1:
   resolved "https://registry.npmmirror.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
-basic-auth@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.npmmirror.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
-  integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
-  dependencies:
-    safe-buffer "5.1.2"
-
 bowser@^2.11.0:
   version "2.11.0"
   resolved "https://registry.npmmirror.com/bowser/-/bowser-2.11.0.tgz#5ca3c35757a7aa5771500c70a73a9f91ef420a8f"
@@ -1101,14 +1094,6 @@ keygrip@~1.1.0:
   dependencies:
     tsscmp "1.0.6"
 
-koa-basic-auth@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmmirror.com/koa-basic-auth/-/koa-basic-auth-4.0.0.tgz#7df593771aeb5fe09c6259db206e2e627da64616"
-  integrity sha512-eV1sGVAizDuFWNpY43VF3Z1ND4PotQZB/igxHNrcJXzXw+Flmj8Uv+4hP9LyNXyvqLJz/X5bmXeMu84AAGD9Jw==
-  dependencies:
-    basic-auth "^2.0.0"
-    tsscmp "^1.0.6"
-
 koa-bodyparser@^4.3.0:
   version "4.3.0"
   resolved "https://registry.npmmirror.com/koa-bodyparser/-/koa-bodyparser-4.3.0.tgz#274c778555ff48fa221ee7f36a9fbdbace22759a"
@@ -1345,11 +1330,6 @@ resolve-path@^1.4.0:
     http-errors "~1.6.2"
     path-is-absolute "1.0.1"
 
-safe-buffer@5.1.2:
-  version "5.1.2"
-  resolved "https://registry.npmmirror.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
-  integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
-
 safe-buffer@5.2.1:
   version "5.2.1"
   resolved "https://registry.npmmirror.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
@@ -1448,7 +1428,7 @@ tslib@^2.3.1:
   resolved "https://registry.npmmirror.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
   integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
 
-tsscmp@1.0.6, tsscmp@^1.0.6:
+tsscmp@1.0.6:
   version "1.0.6"
   resolved "https://registry.npmmirror.com/tsscmp/-/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
   integrity sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==
