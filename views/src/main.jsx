@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import axios from "axios";
 
-window.serverUrl = "https://api.pillbutler.saurlax.com";
+window.serverUrl = "https://api.pillbutler.saurlax.com/api";
 
 Date.prototype.format = function (fmt) {
   var o = {

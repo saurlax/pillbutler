@@ -27,6 +27,7 @@ function Layout() {
     },
     {
       key: "add",
+      title: "添加药品",
       icon: <AddSquareOutline />,
     },
     {

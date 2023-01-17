@@ -13,7 +13,7 @@ const route = new router();
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DB_URI);
 
-route.post("/user/login", async (ctx) => {
+route.post("/api/user/login", async (ctx) => {
   // 登录
   const body = ctx.request.body;
   ctx.body = await User.findOne({
@@ -21,16 +21,16 @@ route.post("/user/login", async (ctx) => {
     password: body.password,
   });
 });
-route.get("/user/:id/boxes", async (ctx) => {
+route.get("/api/user/:id/boxes", async (ctx) => {
   // 获取用户拥有的药盒
   const user = await User.findById(ctx.params.id);
   ctx.body = user.boxes;
 });
-route.get("/box/:id", async (ctx) => {
+route.get("/api/box/:id", async (ctx) => {
   // 获取药盒信息
   ctx.body = await Box.findById(ctx.params.id);
 });
-route.put("/box/:id", async (ctx) => {
+route.put("/api/box/:id", async (ctx) => {
   // 更新药盒信息
   let box = await Box.findOneAndUpdate(ctx.params.id, ctx.request.body, {
     new: true,
@@ -45,7 +45,7 @@ route.put("/box/:id", async (ctx) => {
   });
   ctx.body = await box.save();
 });
-route.put("/box/:id/:index", async (ctx) => {
+route.put("/api/box/:id/:index", async (ctx) => {
   // 更新药盒指定药仓的信息
   let box = await Box.findById(ctx.params.id);
   box.slots[ctx.params.index] = {
@@ -62,11 +62,11 @@ route.put("/box/:id/:index", async (ctx) => {
   });
   ctx.body = await box.save();
 });
-route.get("/drug", async (ctx) => {
+route.get("/api/drug", async (ctx) => {
   // 获取药品列表
   ctx.body = await Drug.find();
 });
-route.get("/drug/:id", async (ctx) => {
+route.get("/api/drug/:id", async (ctx) => {
   // 获取指定药品
   ctx.body = await Drug.findOne({ _id: ctx.params.id });
 });

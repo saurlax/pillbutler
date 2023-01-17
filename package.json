@@ -1,4 +1,5 @@
 {
+  "name": "pillbutler",
   "scripts": {
     "start": "node main.js",
     "build": "cd views && npm run build"
