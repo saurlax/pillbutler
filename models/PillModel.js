@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const drugSchema = new mongoose.Schema({
+const pillSchema = new mongoose.Schema({
   _id: { type: Number, required: true },
   name: { type: String, required: true },
   amount: { type: Number, required: true },
@@ -9,5 +9,5 @@ const drugSchema = new mongoose.Schema({
   price: Number
 });
 
-const Drug = mongoose.model('Drug', drugSchema);
-module.exports = Drug;
+const Pill = mongoose.model('Pill', pillSchema);
+module.exports = Pill;

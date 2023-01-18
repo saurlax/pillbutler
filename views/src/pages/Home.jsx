@@ -10,7 +10,6 @@ const boxImg = [box0, box1];
 
 function Home() {
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
   const [data, setData] = useState(null);
 
   useEffect(async () => {
@@ -19,7 +18,7 @@ function Home() {
 
   return (
     <div>
-      {user ? (
+      {localStorage.getItem("user") ? (
         <div>
           <div
             style={{
@@ -76,7 +75,7 @@ function Home() {
             icon={<SmileOutline />}
             status="info"
             title="请先登录"
-            description="登录后才能查看您的药盒哟~"
+            description="登录后才能查看药盒哟~"
           />
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button

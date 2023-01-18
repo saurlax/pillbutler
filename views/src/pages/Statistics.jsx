@@ -1,25 +1,30 @@
 import {
   Button,
+  CapsuleTabs,
   Card,
+  List,
   ProgressCircle,
   Result,
   Space,
   Steps,
 } from "antd-mobile";
-import { FireFill, SmileOutline } from "antd-mobile-icons";
+import { FireFill, LocationFill, SmileOutline } from "antd-mobile-icons";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { Map, Marker } from "react-amap";
 
 function Statistics() {
   const [data, setData] = useState(null);
   const [week, setWeek] = useState(0);
+  const [index, setIndex] = useState(0);
+
   useEffect(async () => {
     setData(await loadData());
   }, []);
 
   return (
     <div>
-      {localStorage.getItem("user") ? (
+      {localStorage.getItem("user") && data ? (
         <div>
           <div
             style={{
@@ -33,10 +38,22 @@ function Statistics() {
             }}
           ></div>
           <Space
-            style={{ padding: "12px", "--gap": "12px" }}
+            style={{
+              padding: "12px",
+              "--gap": "12px",
+            }}
             block
             direction="vertical"
           >
+            <Card>
+              <CapsuleTabs
+                onChange={setIndex}
+              >
+                {data.map((box, index) => {
+                  return <CapsuleTabs.Tab title={box.name} key={index} />;
+                })}
+              </CapsuleTabs>
+            </Card>
             <Card title="用药情况">
               <Space block direction="vertical" style={{ width: "100%" }}>
                 <Steps
@@ -48,11 +65,10 @@ function Statistics() {
                         const date = new Date();
                         const dayCount = day - date.getDay() + week * 7;
                         let amount = new Array(
-                          Object.keys(data[0]?.slots).length
+                          Object.keys(data[index]?.slots).length
                         ).fill(0);
 
-                        // 暂时只显示第一个药盒的数据
-                        data[0]?.slots.forEach((slot, i) => {
+                        data[index]?.slots.forEach((slot, i) => {
                           slot?.alarm
                             .filter((alarm) => {
                               return (
@@ -63,7 +79,7 @@ function Statistics() {
                               amount[i] += alarm?.amount;
                             });
                         });
-                        let hit = `未服（${data[0]?.slots
+                        let hit = `未服（${data[index]?.slots
                           ?.map((slot, i) => {
                             if (amount[i] > 0)
                               return `${slot?.pill?.name}*${amount[i]}片`;
@@ -127,7 +143,7 @@ function Statistics() {
                 <Space block justify="center" style={{ "--gap": "32px" }}>
                   <ProgressCircle
                     style={{ "--track-width": "8px", "--size": "100px" }}
-                    percent={data[0].steps / 100}
+                    percent={data[index].steps / 100}
                   >
                     <FireFill
                       style={{
@@ -144,22 +160,87 @@ function Statistics() {
                     direction="vertical"
                     justify="center"
                   >
-                    <div>今日已行走{data[0].steps}步</div>
-                    <div>距离{(data[0].steps * 0.00055).toFixed(2)}公里</div>
-                    <div>消耗{(data[0].steps * 0.00004).toFixed(2)}千卡</div>
+                    <div>今日已走{data[index].steps}步</div>
+                    <div>
+                      距离{(data[index].steps * 0.00055).toFixed(2)}公里
+                    </div>
+                    <div>
+                      消耗{(data[index].steps * 0.00004).toFixed(2)}千卡
+                    </div>
                   </Space>
                 </Space>
               ) : null}
             </Card>
+            <Card title="药盒定位">
+              {data[index]?.position ? (
+                <div>
+                  <div style={{ height: "400px" }}>
+                    <Map
+                      plugins={["Scale"]}
+                      center={data[index].position}
+                      zoom={15}
+                    >
+                      <Marker position={data[index].position}>
+                        <LocationFill
+                          style={{
+                            color: "var(--adm-color-danger)",
+                            fontSize: "2.2rem",
+                          }}
+                        />
+                      </Marker>
+                    </Map>
+                  </div>
+                  <List>
+                    <List.Item
+                      onClick={async () => {
+                        setData(await updateData());
+                      }}
+                    >
+                      刷新
+                    </List.Item>
+                    <List.Item
+                      title="高德地图"
+                      onClick={() => {
+                        window.open(
+                          `amapuri://route/plan/?sourceApplication=pillbutler&dlat=${data[index].position.lat}&dlon=${data[index].position.lng}&t=0`
+                        );
+                      }}
+                    >
+                      导航去这里
+                    </List.Item>
+                  </List>
+                </div>
+              ) : (
+                <Result
+                  icon={<SmileOutline />}
+                  status="success"
+                  title="暂时无法定位药盒"
+                  description="药盒未发送定位信息"
+                />
+              )}
+            </Card>
           </Space>
         </div>
       ) : (
-        <Result
-          icon={<SmileOutline />}
-          status="info"
-          title="请先登录"
-          description="登录后才能查看健康记录哟~"
-        />
+        <div>
+          <Result
+            icon={<SmileOutline />}
+            status="info"
+            title="请先登录"
+            description="登录后才能查看记录哟~"
+          />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              color="primary"
+              style={{ width: "120px" }}
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              登录
+            </Button>
+          </div>
+        </div>
       )}
     </div>
   );

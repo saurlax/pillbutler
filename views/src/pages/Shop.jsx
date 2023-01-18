@@ -13,7 +13,7 @@ import axios from "axios";
 
 function Shop() {
   const [search, setSearch] = useState("");
-  const [drugs, setDrugs] = useState([]);
+  const [pills, setPills] = useState([]);
   const [data, setData] = useState(null);
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function Shop() {
 
   useEffect(async () => {
     setData(await loadData());
-    setDrugs((await axios.get(serverUrl + "/drug")).data);
+    setPills((await axios.get(serverUrl + "/pill")).data);
   }, []);
   const options = data
     ? data.map((box) => {
@@ -51,18 +51,18 @@ function Shop() {
         />
       </div>
       <List>
-        {drugs
-          .filter((drug) => {
-            return drug.name.includes(search);
+        {pills
+          .filter((pill) => {
+            return pill.name.includes(search);
           })
-          .map((drug) => {
+          .map((pill) => {
             return (
-              <List.Item key={drug.name}>
+              <List.Item key={pill.name}>
                 <Space>
-                  <b>{drug.name}</b>
-                  {drug.category ? (
+                  <b>{pill.name}</b>
+                  {pill.category ? (
                     <Tag color="#87d068" fill="outline">
-                      {drug.category}
+                      {pill.category}
                     </Tag>
                   ) : null}
                 </Space>
@@ -72,7 +72,7 @@ function Shop() {
                     fontSize: "0.8rem",
                   }}
                 >
-                  {drug.remark}
+                  {pill.remark}
                 </div>
                 <Space
                   block
@@ -88,7 +88,7 @@ function Shop() {
                         fontSize: "1rem",
                       }}
                     >
-                      ¥{(isNaN(drug.price) ? drug.price : drug.price) ?? "?"}
+                      ¥{(isNaN(pill.price) ? pill.price : pill.price) ?? "?"}
                     </span>
                     <span
                       style={{
@@ -96,7 +96,7 @@ function Shop() {
                         fontSize: "0.8rem",
                       }}
                     >
-                      /{drug.amount}个
+                      /{pill.amount}个
                     </span>
                   </div>
                   <Button
@@ -105,7 +105,7 @@ function Shop() {
                     onClick={async () => {
                       if (!localStorage.getItem("user"))
                         return Toast.show("请先登录");
-                      setPill(drug);
+                      setPill(pill);
                       setVisible(true);
                     }}
                   >

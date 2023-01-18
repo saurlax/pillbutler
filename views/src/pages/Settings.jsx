@@ -31,15 +31,8 @@ function Settings() {
               {data?.version}
             </div>
           </Card>
-          <List>
-            <List.Item onClick={() => {}}>音量设置</List.Item>
-            <List.Item
-              onClick={() => {
-                navigate("/findbox");
-              }}
-            >
-              寻找药盒
-            </List.Item>
+          <List header="基础设置">
+            <List.Item onClick={() => {}}>音量</List.Item>
           </List>
         </div>
       ) : null}

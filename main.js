@@ -7,7 +7,7 @@ const bodyparser = require("koa-bodyparser");
 const mongoose = require("mongoose");
 const Box = require("./models/BoxModel");
 const User = require("./models/UserModel");
-const Drug = require("./models/DrugModel");
+const Pill = require("./models/PillModel");
 
 require("dotenv").config();
 const app = new koa();
@@ -64,13 +64,13 @@ route.put("/api/box/:id/:index", async (ctx) => {
   });
   ctx.body = await box.save();
 });
-route.get("/api/drug", async (ctx) => {
+route.get("/api/pill", async (ctx) => {
   // 获取药品列表
-  ctx.body = await Drug.find();
+  ctx.body = await Pill.find();
 });
-route.get("/api/drug/:id", async (ctx) => {
+route.get("/api/pill/:id", async (ctx) => {
   // 获取指定药品
-  ctx.body = await Drug.findOne({ _id: ctx.params.id });
+  ctx.body = await Pill.findOne({ _id: ctx.params.id });
 });
 
 app.use(cors());

@@ -30,52 +30,51 @@ function Manage() {
 
   return (
     <div>
-      <Card
-        style={{
-          backgroundColor: "var(--adm-color-primary)",
-          borderRadius: "0",
-        }}
-      >
-        <Space direction="vertical" block>
-          <div
+      {data ? (
+        <div>
+          <Card
             style={{
-              color: "var(--adm-color-white)",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              backgroundColor: "var(--adm-color-primary)",
+              borderRadius: "0",
             }}
           >
-            <span style={{ color: "var(--adm-color-white)", fontSize: "1rem" }}>
-              {data?.name}
-            </span>
-            <SetOutline
-              style={{ fontSize: "1.2rem" }}
-              onClick={() => {
-                navigate(`/settings/${params.id}`);
-              }}
-            />
-          </div>
-          <Space block style={{ color: "var(--adm-color-white)" }}>
-            <span>剩余电量{data?.electricity}%</span>
-          </Space>
-          <JumboTabs
-            onChange={(key) => {
-              setIndex(key);
-            }}
-            activeKey={index}
-            style={{
-              backgroundColor: "var(--adm-color-white)",
-              borderRadius: "6px",
-            }}
-          >
-            {data
-              ? Object.keys(data?.slots).map((key) => {
-                  const slot = data.slots[key];
+            <Space direction="vertical" block>
+              <div
+                style={{
+                  color: "var(--adm-color-white)",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span
+                  style={{ color: "var(--adm-color-white)", fontSize: "1rem" }}
+                >
+                  {data.name}
+                </span>
+                <SetOutline
+                  style={{ fontSize: "1.2rem" }}
+                  onClick={() => {
+                    navigate(`/settings/${params.id}`);
+                  }}
+                />
+              </div>
+              <Space block style={{ color: "var(--adm-color-white)" }}>
+                <span>剩余电量{data.electricity}%</span>
+              </Space>
+              <JumboTabs
+                onChange={setIndex}
+                style={{
+                  backgroundColor: "var(--adm-color-white)",
+                  borderRadius: "6px",
+                }}
+              >
+                {data.slots.map((slot, i) => {
                   return (
                     <JumboTabs.Tab
-                      title={`${Number.parseInt(key) + 1}号药仓`}
+                      title={`${i + 1}号药仓`}
                       description={slot?.pill?.name ?? "空"}
-                      key={key}
+                      key={i}
                     >
                       <Space wrap>
                         <Tag color="primary">剩余{slot?.pill?.amount}片药</Tag>
@@ -85,75 +84,67 @@ function Manage() {
                       </Space>
                     </JumboTabs.Tab>
                   );
-                })
-              : null}
-          </JumboTabs>
-        </Space>
-      </Card>
-      {index ? (
-        <PullToRefresh
-          onRefresh={async () => {
-            setData(
-              (await updateData()).filter((box) => {
-                return box._id == params.id;
-              })[0]
-            );
-          }}
-        >
-          <List header="定时提醒">
-            {data?.slots[index]?.alarm
-              ? Object.keys(data.slots[index].alarm).map((key) => {
-                  const alarm = data.slots[index].alarm[key];
-                  if (!alarm) return null;
-                  return (
-                    <AlarmItem
-                      onChange={async (value) => {
-                        let slot = data.slots[index];
-                        slot.alarm[key].enabled = value;
-                        setData(await pushData(params.id, slot, index));
-                      }}
-                      onDelete={async () => {
-                        let slot = data.slots[index];
-                        slot.alarm.splice(key, 1);
-                        setData(await pushData(params.id, slot, index));
-                      }}
-                      amount={alarm.amount}
-                      time={new Date(alarm.time)}
-                      period={alarm.period}
-                      enabled={alarm.enabled}
-                      key={Math.random()}
-                    />
-                  );
-                })
-              : null}
-            <List.Item
-              onClick={() => {
-                navigate(`/addalarm/${params.id}/${index}`);
-              }}
-            >
-              添加提醒
-            </List.Item>
-          </List>
-          <List header="药物管理">
-            <List.Item
-              onClick={() => {
-                navigate(`/editpill/${params.id}/${index}`, {
-                  state: { pill: data.slots[index].pill },
-                });
-              }}
-            >
-              修改药物
-            </List.Item>
-          </List>
-        </PullToRefresh>
-      ) : (
-        <Result
-          icon={<SmileOutline />}
-          status="success"
-          title="您还未选择一个药仓哟~"
-          description="在上方选定一个药仓，即可对该药仓设置药物和定时提醒"
-        />
-      )}
+                })}
+              </JumboTabs>
+            </Space>
+          </Card>
+          <PullToRefresh
+            onRefresh={async () => {
+              setData(
+                (await updateData()).filter((box) => {
+                  return box._id == params.id;
+                })[0]
+              );
+            }}
+          >
+            <List header="定时提醒">
+              {data.slots[index]?.alarm
+                ? Object.keys(data.slots[index].alarm).map((key) => {
+                    const alarm = data.slots[index].alarm[key];
+                    if (!alarm) return null;
+                    return (
+                      <AlarmItem
+                        onChange={async (value) => {
+                          let slot = data.slots[index];
+                          slot.alarm[key].enabled = value;
+                          setData(await pushData(params.id, slot, index));
+                        }}
+                        onDelete={async () => {
+                          let slot = data.slots[index];
+                          slot.alarm.splice(key, 1);
+                          setData(await pushData(params.id, slot, index));
+                        }}
+                        amount={alarm.amount}
+                        time={new Date(alarm.time)}
+                        period={alarm.period}
+                        enabled={alarm.enabled}
+                        key={Math.random()}
+                      />
+                    );
+                  })
+                : null}
+              <List.Item
+                onClick={() => {
+                  navigate(`/addalarm/${params.id}/${index}`);
+                }}
+              >
+                添加提醒
+              </List.Item>
+            </List>
+            <List header="药物管理">
+              <List.Item
+                onClick={() => {
+                  navigate(`/editpill/${params.id}/${index}`, {
+                    state: { pill: data.slots[index].pill },
+                  });
+                }}
+              >
+                修改药物
+              </List.Item>
+            </List>
+          </PullToRefresh>
+        </div>
+      ) : null}
     </div>
   );
 }

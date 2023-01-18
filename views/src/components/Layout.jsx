@@ -26,7 +26,7 @@ function Layout() {
       icon: <CompassOutline />,
     },
     {
-      key: "add",
+      key: "addpill",
       title: "添加药品",
       icon: <AddSquareOutline />,
     },
@@ -77,13 +77,7 @@ function Layout() {
           borderTop: "solid 1px var(--adm-border-color)",
         }}
       >
-        {tabs
-          .filter((tab) => {
-            return (
-              localStorage.getItem("shopEntry") == "true" || tab.key != "shop"
-            );
-          })
-          .map((tab) => {
+        {tabs.map((tab) => {
             return <TabBar.Item {...tab} />;
           })}
       </TabBar>

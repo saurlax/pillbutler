@@ -29,28 +29,8 @@ function Me() {
         >
           关于药管管
         </List.Item>
-        <List.Item
-          extra={
-            <Switch
-              defaultChecked={localStorage.getItem("shopEntry") == "true"}
-              onChange={(v) => {
-                localStorage.setItem("shopEntry", v);
-                location.reload();
-              }}
-            />
-          }
-        >
-          商城入口
-        </List.Item>
         {user ? (
           <>
-            <List.Item
-              onClick={() => {
-                navigate("/statistics");
-              }}
-            >
-              健康记录
-            </List.Item>
             <List.Item>
               <Button
                 block

@@ -1,4 +1,4 @@
-import "./App.css";
+import "./base.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -13,9 +13,9 @@ import AddBox from "./pages/AddBox";
 import Manage from "./pages/Manage";
 import Shop from "./pages/Shop";
 import Statistics from "./pages/Statistics";
-import FindBox from "./pages/FindBox";
-import Add from "./pages/Add";
+import AddPill from "./pages/AddPill";
 import Discover from "./pages/Discover";
+import E404 from "./pages/E404";
 
 function App() {
   return (
@@ -24,9 +24,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />
           <Route path="me" element={<Me />} />
-          <Route path="add" element={<Add />} />
+          <Route path="addpill" element={<AddPill />} />
           <Route path="shop" element={<Shop />} />
-          <Route path="findbox" element={<FindBox />} />
           <Route path="discover" element={<Discover />} />
           <Route path="manage/:id" element={<Manage />} />
           <Route path="statistics" element={<Statistics />} />
@@ -39,6 +38,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="manage/new" element={<AddBox />} />
         </Route>
+        <Route path="*" element={<E404 />} />
       </Routes>
     </BrowserRouter>
   );
