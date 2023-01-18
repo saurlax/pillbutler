@@ -43,7 +43,7 @@ function EditPill() {
           amount: value.amount,
           shelfLife: moment(value.shelfLife).format("yyyy/MM/DD hh:mm:ss"),
         };
-        console.log(await pushData(params.id, slot, params.index));
+        await pushData(params.id, slot, params.index);
         navigate(`/manage/${params.id}`);
       }}
     >

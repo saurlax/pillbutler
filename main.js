@@ -88,7 +88,6 @@ app.use(async (ctx, next) => {
 app.use(route.routes()).use(route.allowedMethods());
 app.use(static("public"));
 app.use(async (ctx) => {
-  console.log(ctx.body, ctx.code);
   if (!ctx.path.includes("/api") && ctx.body == null) {
     ctx.type = "html";
     ctx.body = fs.readFileSync("./public/index.html");

@@ -124,7 +124,6 @@ function Shop() {
           setVisible(false);
         }}
         onConfirm={(v) => {
-          console.log(v);
           navigate(`/editpill/${v[0]}/${v[1]}`, {
             state: {
               pill: {

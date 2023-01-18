@@ -1,5 +1,3 @@
-import { Axis, Chart, Legend, Line, Point, Tooltip } from "@antv/f2";
-import Canvas from "@antv/f2-react";
 import {
   Button,
   Card,
@@ -18,29 +16,6 @@ function Statistics() {
   useEffect(async () => {
     setData(await loadData());
   }, []);
-
-  let datav = [
-    { day: "周日", value: 0 },
-    { day: "周一", value: 0 },
-    { day: "周二", value: 0 },
-    { day: "周三", value: 0 },
-    { day: "周四", value: 0 },
-    { day: "周五", value: 0 },
-    { day: "周六", value: 0 },
-  ];
-  if (data) {
-    data[0]?.slots?.forEach((slot) => {
-      slot.alarm
-        .filter((alarm) => {
-          return alarm.enabled;
-        })
-        .forEach((alarm) => {
-          alarm.period.forEach((p) => {
-            datav[p].value += alarm.amount;
-          });
-        });
-    });
-  }
 
   return (
     <div>
@@ -64,23 +39,6 @@ function Statistics() {
           >
             <Card title="用药情况">
               <Space block direction="vertical" style={{ width: "100%" }}>
-                <div style={{}}>周用药量统计</div>
-                <Canvas pixelRatio={window.devicePixelRatio}>
-                  <Chart data={datav}>
-                    <Legend />
-                    <Axis
-                      field="day"
-                      tickCount={3}
-                      style={{
-                        label: { align: "between" },
-                      }}
-                    />
-                    <Axis field="value" tickCount={5} />
-                    <Line x="day" y="value" />
-                    <Point x="day" y="value" />
-                    <Tooltip />
-                  </Chart>
-                </Canvas>
                 <Steps
                   direction="vertical"
                   current={week == 0 ? new Date().getDay() : -1}
@@ -94,8 +52,8 @@ function Statistics() {
                         ).fill(0);
 
                         // 暂时只显示第一个药盒的数据
-                        Object.values(data[0]?.slots).forEach((slot, i) => {
-                          Object.values(slot?.alarm)
+                        data[0]?.slots.forEach((slot, i) => {
+                          slot?.alarm
                             .filter((alarm) => {
                               return (
                                 alarm?.enabled && alarm?.period?.includes(day)
@@ -105,7 +63,7 @@ function Statistics() {
                               amount[i] += alarm?.amount;
                             });
                         });
-                        let hit = `未服（${Object.values(data[0]?.slots)
+                        let hit = `未服（${data[0]?.slots
                           ?.map((slot, i) => {
                             if (amount[i] > 0)
                               return `${slot?.pill?.name}*${amount[i]}片`;
@@ -118,7 +76,7 @@ function Statistics() {
                           <Steps.Step
                             title={moment(
                               date.getTime() + dayCount * 86400000
-                            ).format("yyyy年MM月dd日 D")}
+                            ).format("ll")}
                             description={
                               dayCount > 0
                                 ? hit == "未服（）"

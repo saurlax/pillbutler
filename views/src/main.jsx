@@ -116,7 +116,7 @@ window.updateData = async () => {
   }
   localStorage.setItem("boxesData", JSON.stringify(data));
 
-  console.log(boxes.data, data);
+  console.log(data);
   return data;
 };
 
