@@ -20,8 +20,8 @@
 
 ## 如何启动项目
 
-1. 分别在根目录和`views`目录下运行`yarn`来安装所需依赖
-2. 运行`yarn run build`来编译前端页面
+1. 运行`yarn`安装所需依赖
+2. 运行`yarn run build`编译前端页面
 3. 在根目录下添加`.env`文件，添加配置：
 
 ```properties
