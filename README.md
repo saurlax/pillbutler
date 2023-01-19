@@ -25,8 +25,8 @@
 3. 在根目录下添加`.env`文件，添加配置：
 
 ```properties
-DB_URI=mongodb://localhost      // 这里改为实际要连接的数据库地址
-PORT=3000                       // 项目运行端口
+DB_URI=mongodb://localhost/pillbutler // 这里改为实际要连接的数据库地址
+PORT=3000                             // 项目运行端口
 ```
 
 4. 运行`yarn start`启动项目
