@@ -11,7 +11,6 @@ import Login from "./pages/Login";
 import AddAlarm from "./pages/AddAlarm";
 import AddBox from "./pages/AddBox";
 import Manage from "./pages/Manage";
-import Shop from "./pages/Shop";
 import Statistics from "./pages/Statistics";
 import AddPill from "./pages/AddPill";
 import Discover from "./pages/Discover";
@@ -25,7 +24,6 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="me" element={<Me />} />
           <Route path="addpill" element={<AddPill />} />
-          <Route path="shop" element={<Shop />} />
           <Route path="discover" element={<Discover />} />
           <Route path="manage/:id" element={<Manage />} />
           <Route path="statistics" element={<Statistics />} />

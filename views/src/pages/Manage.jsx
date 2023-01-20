@@ -98,31 +98,28 @@ function Manage() {
             }}
           >
             <List header="定时提醒">
-              {data.slots[index]?.alarm
-                ? Object.keys(data.slots[index].alarm).map((key) => {
-                    const alarm = data.slots[index].alarm[key];
-                    if (!alarm) return null;
-                    return (
-                      <AlarmItem
-                        onChange={async (value) => {
-                          let slot = data.slots[index];
-                          slot.alarm[key].enabled = value;
-                          setData(await pushData(params.id, slot, index));
-                        }}
-                        onDelete={async () => {
-                          let slot = data.slots[index];
-                          slot.alarm.splice(key, 1);
-                          setData(await pushData(params.id, slot, index));
-                        }}
-                        amount={alarm.amount}
-                        time={new Date(alarm.time)}
-                        period={alarm.period}
-                        enabled={alarm.enabled}
-                        key={Math.random()}
-                      />
-                    );
-                  })
-                : null}
+              {data.slots[index].alarm?.map((alarm, i) => {
+                if (!alarm) return null;
+                return (
+                  <AlarmItem
+                    onChange={async (value) => {
+                      let slot = data.slots[index];
+                      alarm.enabled = value;
+                      setData(await pushData(params.id, slot, index));
+                    }}
+                    onDelete={async () => {
+                      let slot = data.slots[index];
+                      slot.alarm.splice(i, 1);
+                      setData(await pushData(params.id, slot, index));
+                    }}
+                    amount={alarm.amount}
+                    time={new Date(alarm.time)}
+                    period={alarm.period}
+                    enabled={alarm.enabled}
+                    key={alarm.time + alarm.period}
+                  />
+                );
+              })}
               <List.Item
                 onClick={() => {
                   navigate(`/addalarm/${params.id}/${index}`);

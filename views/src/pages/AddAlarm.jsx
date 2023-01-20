@@ -6,6 +6,7 @@ import {
   Stepper,
   Toast,
 } from "antd-mobile";
+import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 
 const timeData = [
@@ -67,14 +68,9 @@ function AddAlarm(props) {
         for (i = 0; i < 100; i++) {
           if (!alarm[i]) {
             slot.alarm[i] = {
-              time: moment(
-                2000,
-                0,
-                1,
-                value.time[0],
-                value.time[1],
-                0
-              ).format("yyyy/MM/dd hh:mm:ss"),
+              time: moment(new Date(2000, 0, 1, value.time[0], value.time[1], 0)).format(
+                "yyyy/MM/DD hh:mm:ss"
+              ),
               period: value.period,
               amount: value.amount,
               enabled: true,

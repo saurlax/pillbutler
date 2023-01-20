@@ -116,7 +116,6 @@ window.updateData = async () => {
   }
   localStorage.setItem("boxesData", JSON.stringify(data));
 
-  console.log(data);
   return data;
 };
 
@@ -130,7 +129,7 @@ window.loadData = async () => {
 
 window.pushData = async (id, data, index) => {
   const res = await axios.put(
-    serverUrl + "/box/" + id + (index ? `/${index}` : ""),
+    serverUrl + "/box/" + id + (index != null ? `/${index}` : ""),
     data
   );
   await updateData();

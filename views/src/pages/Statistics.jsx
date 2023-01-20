@@ -7,6 +7,7 @@ import {
   Result,
   Space,
   Steps,
+  Tag,
 } from "antd-mobile";
 import { FireFill, LocationFill, SmileOutline } from "antd-mobile-icons";
 import moment from "moment";
@@ -45,15 +46,26 @@ function Statistics() {
             block
             direction="vertical"
           >
-            <Card>
-              <CapsuleTabs
-                onChange={setIndex}
-              >
-                {data.map((box, index) => {
-                  return <CapsuleTabs.Tab title={box.name} key={index} />;
-                })}
-              </CapsuleTabs>
-            </Card>
+            <CapsuleTabs
+              onChange={setIndex}
+              style={{ backgroundColor: "#ffffff", borderRadius: "8px" }}
+            >
+              {data.map((box, index) => {
+                return (
+                  <CapsuleTabs.Tab title={box.name} key={index}>
+                    <Space wrap>
+                      {box.slots.map((slot, i) => {
+                        return slot ? (
+                          <Tag>
+                            {i + 1}号药仓：{slot.pill.name}*{slot.pill.amount}片
+                          </Tag>
+                        ) : null;
+                      })}
+                    </Space>
+                  </CapsuleTabs.Tab>
+                );
+              })}
+            </CapsuleTabs>
             <Card title="用药情况">
               <Space block direction="vertical" style={{ width: "100%" }}>
                 <Steps
@@ -64,9 +76,9 @@ function Statistics() {
                     ? new Array(7).fill(null).map((_null, day) => {
                         const date = new Date();
                         const dayCount = day - date.getDay() + week * 7;
-                        let amount = new Array(
-                          Object.keys(data[index]?.slots).length
-                        ).fill(0);
+                        let amount = new Array(data[index]?.slots.length).fill(
+                          0
+                        );
 
                         data[index]?.slots.forEach((slot, i) => {
                           slot?.alarm
