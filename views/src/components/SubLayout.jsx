@@ -14,6 +14,7 @@ function SubLayout() {
     manage: "添加药盒",
     statistics: "健康记录",
     findbox: "寻找药盒",
+    addpillbyscan: "扫码添加药品",
   };
 
   return (

@@ -2,10 +2,12 @@ import {
   Button,
   CascadePicker,
   List,
+  Result,
   SearchBar,
   Space,
   Tag,
 } from "antd-mobile";
+import { ScanCodeOutline, SmileOutline } from "antd-mobile-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -53,6 +55,21 @@ function AddPill() {
             />
           </div>
           <List>
+            <List.Item>
+              <Space>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    navigate("/addpillbyscan");
+                  }}
+                >
+                  <Space>
+                    <ScanCodeOutline />
+                    扫码添加药品
+                  </Space>
+                </Button>
+              </Space>
+            </List.Item>
             {pills
               .filter((pill) => {
                 return pill.name.includes(search);
