@@ -16,6 +16,7 @@ import AddPill from "./pages/AddPill";
 import Discover from "./pages/Discover";
 import E404 from "./pages/E404";
 import AddPillByScan from "./pages/AddPillByScan";
+import Post from "./pages/Post";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         </Route>
         <Route path="/" element={<SubLayout />}>
           <Route path="about" element={<About />} />
+          <Route path="post/:id" element={<Post />} />
           <Route path="addpillbyscan" element={<AddPillByScan />} />
           <Route path="editpill/:id/:index" element={<EditPill />} />
           <Route path="addalarm/:id/:index" element={<AddAlarm />} />

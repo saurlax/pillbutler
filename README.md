@@ -87,6 +87,11 @@ const Pill = {
   remark: String,
   price: Number,
 };
+
+const Post = {
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+};
 ```
 
 | 路径                | 方法 | 输入                 | 输出   | 备注                                   |
@@ -98,3 +103,5 @@ const Pill = {
 | /api/box/:id/:index | PUT  | Box.slots[index]     | Box    | 更新指定药仓数据，返回更新后的药盒数据 |
 | /api/pill           | GET  | -                    | Pill[] | 返回商城药品列表                       |
 | /api/pill/:id       | GET  | -                    | Pill   | 返回指定药品信息                       |
+| /api/post           | GET  | -                    | Post[] | 返回发现页文章列表                     |
+| /api/post/:id       | GET  | -                    | Post   | 返回指定发现页文章                     |

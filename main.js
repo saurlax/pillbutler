@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const Box = require("./models/BoxModel");
 const User = require("./models/UserModel");
 const Pill = require("./models/PillModel");
+const Post = require("./models/PostModel");
 
 require("dotenv").config();
 const app = new koa();
@@ -71,6 +72,14 @@ route.get("/api/pill", async (ctx) => {
 route.get("/api/pill/:id", async (ctx) => {
   // 获取指定药品
   ctx.body = await Pill.findOne({ _id: ctx.params.id });
+});
+route.get("/api/post", async (ctx) => {
+  // 获取文章列表
+  ctx.body = await Post.find();
+});
+route.get("/api/post/:id", async (ctx) => {
+  // 获取指定文章
+  ctx.body = await Post.findOne({ _id: ctx.params.id });
 });
 
 app.use(cors());

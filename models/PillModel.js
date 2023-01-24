@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const pillSchema = new mongoose.Schema({
   _id: { type: Number, required: true },
@@ -6,8 +6,8 @@ const pillSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   category: String,
   remark: String,
-  price: Number
+  price: Number,
 });
 
-const Pill = mongoose.model('Pill', pillSchema);
+const Pill = mongoose.model("Pill", pillSchema);
 module.exports = Pill;
