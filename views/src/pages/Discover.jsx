@@ -21,7 +21,11 @@ function Discover() {
               onClick={() => {
                 navigate(`/post/${post._id}`);
               }}
-              description={post.content.slice(0, 50)}
+              description={
+                post.content.length > 30
+                  ? post.content.slice(0, 50) + "..."
+                  : post.content
+              }
             >
               {post.title}
             </List.Item>
