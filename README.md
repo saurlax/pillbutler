@@ -20,8 +20,8 @@
 
 ## 如何启动项目
 
-1. 运行`yarn`安装所需依赖
-2. 运行`yarn run build`编译前端页面
+1. 运行`yarn run i:yarn`或`npm run i:npm`安装所需依赖
+2. 运行`yarn run build`或`npm run build`编译前端页面
 3. 在根目录下添加`.env`文件，添加配置：
 
 ```properties
@@ -29,7 +29,7 @@ DB_URI=mongodb://localhost/pillbutler // 这里改为实际要连接的数据库
 PORT=3000                             // 项目运行端口
 ```
 
-4. 运行`yarn start`启动项目
+4. 运行`yarn start`或`npm start`启动项目
 
 ## APIs
 

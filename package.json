@@ -2,7 +2,9 @@
   "name": "pillbutler",
   "scripts": {
     "start": "node main.js",
-    "build": "cd views && npm run build"
+    "build": "cd views && npm run build",
+    "i:yarn": "yarn & cd views && yarn",
+    "i:npm": "npm i & cd views && npm i"
   },
   "dependencies": {
     "axios": "^0.27.2",
