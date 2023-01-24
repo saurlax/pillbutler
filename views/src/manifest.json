@@ -1,0 +1,13 @@
+{
+  "background_color": "#168888",
+  "description": "视障人群患者口服药物伴侣",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "src/favicon.ico"
+    }
+  ],
+  "name": "药管管",
+  "short_name": "药管管",
+  "start_url": "/index.html"
+}
