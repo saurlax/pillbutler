@@ -12,7 +12,11 @@ function Post() {
   return (
     <div style={{ padding: "10px 20px", wordBreak: "break-all" }}>
       <h1>{post?.title}</h1>
-      <div>{post?.content}</div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: post?.content.replaceAll("\n", "<br>"),
+        }}
+      ></div>
     </div>
   );
 }
