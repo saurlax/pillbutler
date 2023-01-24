@@ -6,12 +6,7 @@ function AddPillByScan() {
 
   return (
     <div>
-      <BarcodeScanner
-        onCapture={(v) => {
-          console.log(v);
-          setCode(v);
-        }}
-      />
+      <BarcodeScanner onCapture={setCode} />
       <div>Result: {code}</div>
     </div>
   );
