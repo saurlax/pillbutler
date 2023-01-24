@@ -29,12 +29,10 @@ function AddPill() {
         return {
           label: box.name,
           value: box._id,
-          children: box.slots.map((key) => {
+          children: box.slots.map((slot, i) => {
             return {
-              label: `${Number.parseInt(key) + 1}号药仓（${
-                box.slots[key]?.pill?.name ?? "空"
-              }）`,
-              value: key,
+              label: `${i + 1}号药仓（${slot.pill?.name ?? "空"}）`,
+              value: i,
             };
           }),
         };
