@@ -10,3 +10,7 @@ body {
 :root {
   --adm-color-primary: #168888 !important;
 }
+
+.adm-pull-to-refresh {
+  touch-action: none;
+}

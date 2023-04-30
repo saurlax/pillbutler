@@ -304,6 +304,13 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@preflower/barcode-detector-polyfill@^0.9.16":
+  version "0.9.16"
+  resolved "https://registry.npmmirror.com/@preflower/barcode-detector-polyfill/-/barcode-detector-polyfill-0.9.16.tgz#871244d3971052370974422c011f5edba71a7fdb"
+  integrity sha512-B77jnOhRD8IiR7crlsy8FdqZswvJUJeU/p5mEAMZSQgsavgTRX1gkTLHlYHNUV0l1NYAFYrsIZPhxoN+FXin+g==
+  dependencies:
+    "@undecaf/zbar-wasm" "^0.9.12"
+
 "@react-spring/animated@~9.5.5":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.5.5.tgz#d3bfd0f62ed13a337463a55d2c93bb23c15bbf3e"
@@ -393,6 +400,11 @@
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@undecaf/zbar-wasm@^0.9.12":
+  version "0.9.13"
+  resolved "https://registry.npmmirror.com/@undecaf/zbar-wasm/-/zbar-wasm-0.9.13.tgz#dc17280770a8d075205c32dd4d1ce95faec0546f"
+  integrity sha512-Xl4eyfU8nwtTHF4Wi0Qyklq8BC6BmW++GYlN0gCeIgrqeIDmV7xp3nNpIN4fQpIbdvq3lvgnvVcBKAiYn9FvzA==
 
 "@use-gesture/core@10.2.20":
   version "10.2.20"
@@ -500,13 +512,6 @@ axios@^0.27.2:
   dependencies:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
-
-barcode-detector-zbar@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmmirror.com/barcode-detector-zbar/-/barcode-detector-zbar-1.1.0.tgz#30875b9114ebb39fe01f4e1a24d90bf0f7bb7469"
-  integrity sha512-ZeknGpSNNsu5h0Y7PsVPOFjuOlAQmIGe5i05wzGGzbC/4ae8RRAGfVzXNVqg8i6f9jSats73pnAa9fZHyevcvQ==
-  dependencies:
-    zbar.wasm "^2.1.1"
 
 big.js@^6.2.1:
   version "6.2.1"
@@ -842,6 +847,11 @@ mime-types@^2.1.12:
   dependencies:
     mime-db "1.52.0"
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.npmmirror.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
@@ -909,14 +919,14 @@ react-amap@^1.2.8:
   resolved "https://registry.yarnpkg.com/react-amap/-/react-amap-1.2.8.tgz#cb5a6441c5e83acb0d7b2e8a1b20dc539b759d9b"
   integrity sha512-uHPEUXti+CcwFyCeqGGqR0ACnXJA9D8S/lQYal9AG3XEOrwkaOFbWUavrvXxjcfAclROIWg8uKxzlRpMQnkHFg==
 
-react-barcode-scanner@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.npmmirror.com/react-barcode-scanner/-/react-barcode-scanner-0.0.4.tgz#8ae8efbb5fbd1e0f59ab5e4f5cd887867f1115ea"
-  integrity sha512-k4q7m7O4haypmld5w93JzAmrhITcT1Jc421F74QiGltzMJL/029ioASEcQj/vXxGjtZT3BwRpwtQBvb+yR6oDg==
+react-barcode-scanner@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/react-barcode-scanner/-/react-barcode-scanner-1.0.1.tgz#7e63f087d0f12f8632d0ebf4624fc49ccc46d45b"
+  integrity sha512-wb7N4RfvLOKuGS0dAr9eWLGmlrvu7rlrOfXD4Z3QcFuZfxku/4bZQbRU09EJ1hEMMM64FumOGX3rqfDaBa/stg==
   dependencies:
-    barcode-detector-zbar "^1.1.0"
-    tslib "^2.3.1"
-    webrtc-adapter "^8.1.1"
+    "@preflower/barcode-detector-polyfill" "^0.9.16"
+    tslib "^2.5.0"
+    webrtc-adapter "^8.2.0"
 
 react-dom@^17.0.2:
   version "17.0.2"
@@ -1009,10 +1019,10 @@ screenfull@^5.0.0:
   resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-5.2.0.tgz#6533d524d30621fc1283b9692146f3f13a93d1ba"
   integrity sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==
 
-sdp@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.npmmirror.com/sdp/-/sdp-3.0.3.tgz#669958d54663ea9f4a46cc66518c9d980c52c61e"
-  integrity sha512-8EkfckS+XZQaPLyChu4ey7PghrdcraCVNpJe2Gfdi2ON1ylQ7OasuKX+b37R9slnRChwIAiQgt+oj8xXGD8x+A==
+sdp@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npmmirror.com/sdp/-/sdp-3.2.0.tgz#8961420552b36663b4d13ddba6f478d1461896a5"
+  integrity sha512-d7wDPgDV3DDiqulJjKiV2865wKsJ34YI+NDREbm+FySq6WuKOikwyNQcm+doLAZ1O6ltdO0SeKle2xMpN3Brgw==
 
 semver@^6.3.0:
   version "6.3.0"
@@ -1051,10 +1061,15 @@ to-fast-properties@^2.0.0:
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==
 
-tslib@^2.3.1, tslib@^2.4.0:
+tslib@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
   integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
+
+tslib@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.npmmirror.com/tslib/-/tslib-2.5.0.tgz#42bfed86f5787aeb41d031866c8f402429e0fddf"
+  integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
 
 update-browserslist-db@^1.0.9:
   version "1.0.10"
@@ -1081,14 +1096,9 @@ vite@^2.9.5:
   optionalDependencies:
     fsevents "~2.3.2"
 
-webrtc-adapter@^8.1.1:
-  version "8.2.0"
-  resolved "https://registry.npmmirror.com/webrtc-adapter/-/webrtc-adapter-8.2.0.tgz#566220c95d707017bbefbb555d6e2467dd1b691e"
-  integrity sha512-umxCMgedPAVq4Pe/jl3xmelLXLn4XZWFEMR5Iipb5wJ+k1xMX0yC4ZY9CueZUU1MjapFxai1tFGE7R/kotH6Ww==
+webrtc-adapter@^8.2.0:
+  version "8.2.2"
+  resolved "https://registry.npmmirror.com/webrtc-adapter/-/webrtc-adapter-8.2.2.tgz#3497a7a57905b2ec0bf804278a775a348952ca16"
+  integrity sha512-jQWwqiAEAFZamWliJo0Q+dIC6ZMJ8BgCFvW/oXWVFby1Nw14dOUfPwZ3lVe4nafDXdTyCUT7xfLt5xXiioXUCQ==
   dependencies:
-    sdp "^3.0.2"
-
-zbar.wasm@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmmirror.com/zbar.wasm/-/zbar.wasm-2.1.1.tgz#f39d201d263ce4d6e559fe8c024af294acd4cf4e"
-  integrity sha512-iXX2tMFRRt2R4+mbKBhNa3TrN0fd5CbzLceasGTBOofA7eF1VvwZeAHW3UkEMDU8w3rSvwx9N3cyosX55UJ+Xw==
+    sdp "^3.2.0"
