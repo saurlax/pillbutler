@@ -1,4 +1,4 @@
-# 药管管 Pillbutler
+# 药管管/药康宝盒/Pillbutler
 
 ![](https://img.shields.io/badge/Koa-grey)
 ![](https://img.shields.io/badge/MongoDB-green)
