@@ -25,5 +25,3 @@ dist-ssr
 
 .env
 public
-package-lock.json
-yarn.lock
