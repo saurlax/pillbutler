@@ -37,7 +37,7 @@ function setupMomentLocale() {
       llll: "YYYY年M月D日dddd HH:mm",
     },
     meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
-    meridiemHour: function (hour, meridiem) {
+    meridiemHour: function (hour: number, meridiem: string) {
       if (hour === 12) {
         hour = 0;
       }
@@ -49,7 +49,7 @@ function setupMomentLocale() {
         return hour >= 11 ? hour : hour + 12;
       }
     },
-    meridiem: function (hour, minute) {
+    meridiem: function (hour: number, minute: number) {
       const hm = hour * 100 + minute;
       if (hm < 600) {
         return "凌晨";
@@ -73,7 +73,7 @@ function setupMomentLocale() {
       sameElse: "L",
     },
     dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
-    ordinal: function (number, period) {
+    ordinal: function (number: number, period: string) {
       switch (period) {
         case "d":
         case "D":
@@ -108,7 +108,7 @@ function setupMomentLocale() {
       dow: 1,
       doy: 4,
     },
-  });
+  } as any);
 
   moment.locale("zh-cn");
 }

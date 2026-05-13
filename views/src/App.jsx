@@ -1,21 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Me from "./pages/Me";
-import Settings from "./pages/Settings";
-import About from "./pages/About";
-import EditPill from "./pages/EditPill";
+import Home from "./screens/Home";
+import Me from "./screens/Me";
+import Settings from "./screens/Settings";
+import About from "./screens/About";
+import EditPill from "./screens/EditPill";
 import SubLayout from "./components/SubLayout";
-import Login from "./pages/Login";
-import AddAlarm from "./pages/AddAlarm";
-import AddBox from "./pages/AddBox";
-import Manage from "./pages/Manage";
-import Statistics from "./pages/Statistics";
-import AddPill from "./pages/AddPill";
-import Discover from "./pages/Discover";
-import E404 from "./pages/E404";
-import AddPillByScan from "./pages/AddPillByScan";
-import Post from "./pages/Post";
+import Login from "./screens/Login";
+import AddAlarm from "./screens/AddAlarm";
+import AddBox from "./screens/AddBox";
+import Manage from "./screens/Manage";
+import Statistics from "./screens/Statistics";
+import AddPill from "./screens/AddPill";
+import Discover from "./screens/Discover";
+import E404 from "./screens/E404";
+import AddPillByScan from "./screens/AddPillByScan";
+import Post from "./screens/Post";
 
 function App() {
   return (

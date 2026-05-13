@@ -1,7 +1,5 @@
-import dynamic from "next/dynamic";
-
-const ClientApp = dynamic(() => import("@/legacy/ClientApp"), { ssr: false });
+import ClientOnlyApp from "./ClientOnlyApp";
 
 export default function CatchAllPage() {
-  return <ClientApp />;
+  return <ClientOnlyApp />;
 }
