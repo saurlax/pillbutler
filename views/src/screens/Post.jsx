@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 function Post() {
   const [post, setPost] = useState();
   const params = useParams();
-  useEffect(async () => {
-    setPost((await axios.get(serverUrl + `/post/${params.id}`)).data);
-  });
+  useEffect(() => {
+    (async () => {
+      setPost((await axios.get(serverUrl + `/post/${params.id}`)).data);
+    })();
+  }, [params.id]);
 
   return (
     <div style={{ padding: "10px 20px", wordBreak: "break-all" }}>

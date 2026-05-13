@@ -15,8 +15,8 @@ function Login() {
           borderRadius: "0",
         }}
       >
-        <div style={{ margin: "10px 0", textAlign: "center" }}>
-          <div style={{ fontSize: "1.4rem", fontWeight: "blod" }}>药管管</div>
+          <div style={{ margin: "10px 0", textAlign: "center" }}>
+            <div style={{ fontSize: "1.4rem", fontWeight: "bold" }}>药管管</div>
           <div>您身边的智能药盒</div>
         </div>
       </Card>

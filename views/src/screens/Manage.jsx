@@ -20,12 +20,14 @@ function Manage() {
   const [data, setData] = useState(null);
   const [index, setIndex] = useState(0);
 
-  useEffect(async () => {
-    setData(
-      (await loadData()).filter((box) => {
-        return box._id == params.id;
-      })[0]
-    );
+  useEffect(() => {
+    (async () => {
+      setData(
+        (await loadData()).filter((box) => {
+          return box._id == params.id;
+        })[0]
+      );
+    })();
   }, []);
 
   return (

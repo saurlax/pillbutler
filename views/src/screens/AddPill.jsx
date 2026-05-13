@@ -20,9 +20,11 @@ function AddPill() {
   const [visible, setVisible] = useState(false);
   const [pill, setPill] = useState(null);
 
-  useEffect(async () => {
-    setData(await loadData());
-    setPills((await axios.get(serverUrl + "/pill")).data);
+  useEffect(() => {
+    (async () => {
+      setData(await loadData());
+      setPills((await axios.get(serverUrl + "/pill")).data);
+    })();
   }, []);
   const options = data
     ? data.map((box) => {
@@ -106,7 +108,7 @@ function AddPill() {
                           }}
                         >
                           ¥
-                          {(isNaN(pill.price) ? pill.price : pill.price) ?? "?"}
+                          {pill.price ?? "?"}
                         </span>
                         <span
                           style={{

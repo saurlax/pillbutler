@@ -8,8 +8,10 @@ function Discover() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState();
 
-  useEffect(async () => {
-    setPosts((await axios.get(serverUrl + "/post")).data);
+  useEffect(() => {
+    (async () => {
+      setPosts((await axios.get(serverUrl + "/post")).data);
+    })();
   }, []);
 
   return (

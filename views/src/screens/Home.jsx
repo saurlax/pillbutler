@@ -12,8 +12,10 @@ function Home() {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
 
-  useEffect(async () => {
-    setData(await loadData());
+  useEffect(() => {
+    (async () => {
+      setData(await loadData());
+    })();
   }, []);
 
   return (

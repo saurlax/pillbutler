@@ -19,8 +19,10 @@ function Statistics() {
   const [week, setWeek] = useState(0);
   const [index, setIndex] = useState(0);
 
-  useEffect(async () => {
-    setData(await loadData());
+  useEffect(() => {
+    (async () => {
+      setData(await loadData());
+    })();
   }, []);
 
   return (
