@@ -11,7 +11,7 @@ import {
 import { ScanCodeOutline, SmileOutline } from "antd-mobile-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { httpGet } from "@/lib/http";
 
 function AddPill() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function AddPill() {
   useEffect(() => {
     (async () => {
       setData(await loadData());
-      setPills((await axios.get(serverUrl + "/pill")).data);
+      setPills(await httpGet(serverUrl + "/pill"));
     })();
   }, []);
   const options = data

@@ -1,9 +1,9 @@
 // @ts-nocheck
 import { List } from "antd-mobile";
-import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { httpGet } from "@/lib/http";
 
 function Discover() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Discover() {
 
   useEffect(() => {
     (async () => {
-      setPosts((await axios.get(serverUrl + "/post")).data);
+      setPosts(await httpGet(serverUrl + "/post"));
     })();
   }, []);
 

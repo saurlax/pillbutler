@@ -1,14 +1,14 @@
 // @ts-nocheck
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { httpGet } from "@/lib/http";
 
 function Post() {
   const [post, setPost] = useState();
   const params = useParams();
   useEffect(() => {
     (async () => {
-      setPost((await axios.get(serverUrl + `/post/${params.id}`)).data);
+      setPost(await httpGet(serverUrl + `/post/${params.id}`));
     })();
   }, [params.id]);
 

@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { Button, Card, Form, Input, Toast } from "antd-mobile";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import CryptoJS from "crypto-js";
+import { httpPost } from "@/lib/http";
 
 function Login() {
   const navigate = useNavigate();
@@ -29,12 +29,12 @@ function Login() {
           </Button>
         }
         onFinish={async (value) => {
-          const res = await axios.post(serverUrl + "/user/login", {
+          const res = await httpPost<{ _id?: string }, { username: string; password: string }>(serverUrl + "/user/login", {
             username: value.username,
             password: CryptoJS.SHA256(value.password).toString(),
           });
-          if (res.data._id) {
-            localStorage.setItem("user", res.data._id);
+          if (res._id) {
+            localStorage.setItem("user", res._id);
             Toast.show({
               content: "登录成功",
             });
