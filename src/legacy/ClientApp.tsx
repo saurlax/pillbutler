@@ -119,8 +119,12 @@ function setupLegacyGlobals() {
   }
 
   window.__pillbutlerInitialized = true;
+  const isLocalHost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
   window.serverUrl =
-    process.env.NEXT_PUBLIC_SERVER_URL ?? "/api";
+    process.env.NEXT_PUBLIC_SERVER_URL ??
+    (isLocalHost ? "/api" : "https://pillbutler.saurlax.com/api");
 
   window.updateData = async () => {
     const user = localStorage.getItem("user");

@@ -4,6 +4,8 @@ import { normalizeBoxAlarms } from "@/lib/box";
 import { connectMongoDb } from "@/lib/mongodb";
 import Box from "@/server/models/BoxModel";
 
+const ALLOWED_SLOT_FIELDS = ["pill", "alarm"] as const;
+
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string; index: string }> }
@@ -23,10 +25,18 @@ export async function PUT(
       return NextResponse.json({ error: "Invalid slot index" }, { status: 400 });
     }
 
-    box.slots[slotIndex] = {
-      ...box.slots[slotIndex],
-      ...body,
-    };
+    const safeBody = Object.fromEntries(
+      Object.entries(body).filter(([key]) =>
+        ALLOWED_SLOT_FIELDS.includes(key as (typeof ALLOWED_SLOT_FIELDS)[number])
+      )
+    );
+
+    if ("pill" in safeBody) {
+      box.slots[slotIndex].pill = safeBody.pill as (typeof box.slots)[number]["pill"];
+    }
+    if ("alarm" in safeBody) {
+      box.slots[slotIndex].alarm = safeBody.alarm as (typeof box.slots)[number]["alarm"];
+    }
     box.sequence++;
 
     normalizeBoxAlarms(box);

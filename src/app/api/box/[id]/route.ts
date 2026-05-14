@@ -4,6 +4,14 @@ import { normalizeBoxAlarms } from "@/lib/box";
 import { connectMongoDb } from "@/lib/mongodb";
 import Box from "@/server/models/BoxModel";
 
+const ALLOWED_BOX_FIELDS = [
+  "name",
+  "electricity",
+  "settings",
+  "position",
+  "steps",
+] as const;
+
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
   try {
     await connectMongoDb();
@@ -22,11 +30,18 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     const { id } = await params;
     const body = await request.json();
 
-    const box = await Box.findByIdAndUpdate(id, body, { new: true });
+    const box = await Box.findById(id);
     if (!box) {
       return NextResponse.json(null, { status: 404 });
     }
 
+    const safeBody = Object.fromEntries(
+      Object.entries(body).filter(([key]) =>
+        ALLOWED_BOX_FIELDS.includes(key as (typeof ALLOWED_BOX_FIELDS)[number])
+      )
+    );
+
+    Object.assign(box, safeBody);
     box.sequence++;
     normalizeBoxAlarms(box);
 

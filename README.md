@@ -25,10 +25,17 @@
 
 ```properties
 DB_URI=mongodb://localhost/pillbutler // 这里改为实际要连接的数据库地址
+NEXT_PUBLIC_SERVER_URL=/api          // （可选）仅影响浏览器端 window.serverUrl 请求地址；Next.js /api 路由仍由服务端提供
 ```
 
 3. 运行`yarn dev`或`npm run dev`启动开发环境
 4. 运行`yarn build && yarn start`或`npm run build && npm start`启动生产环境
+
+### 迁移说明
+
+- 旧版本默认 API 地址为 `https://pillbutler.saurlax.com/api`。
+- 新版本未设置该变量时，本地开发环境（localhost/127.0.0.1）默认使用 `/api`，其他环境保持旧默认地址。
+- 旧 Koa 启动方式已移除，`npm start` 现为 Next.js 生产服务启动命令。
 
 ## APIs
 
