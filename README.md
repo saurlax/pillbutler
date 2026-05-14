@@ -1,6 +1,5 @@
 # 药管管/药康宝盒/Pillbutler
 
-![](https://img.shields.io/badge/Koa-grey)
 ![](https://img.shields.io/badge/MongoDB-green)
 ![](https://img.shields.io/badge/Next.js-black)
 ![](https://img.shields.io/badge/TypeScript-blue)
@@ -10,7 +9,7 @@
 
 药管管，视障人群患者口服药物伴侣。本项目需要配合硬件使用。
 
-前后端分离项目，前端项目位于`views`文件夹内（Next.js + TypeScript）。
+当前项目基于 Next.js + TypeScript，前端与后端 API 均在根目录同一应用中实现。
 
 - 账号登录，多个账号可管理多个药盒
 - 药盒管理，可分别设置每个药盒的药品名字、品牌、备注、数量、保质期
@@ -21,16 +20,15 @@
 
 ## 如何启动项目
 
-1. 运行`yarn run i:yarn`或`npm run i:npm`安装所需依赖
-2. 运行`yarn run build`或`npm run build`编译前端页面
-3. 在根目录下添加`.env`文件，添加配置：
+1. 运行`yarn`或`npm install`安装依赖
+2. 在根目录下添加`.env.local`文件，添加配置：
 
 ```properties
 DB_URI=mongodb://localhost/pillbutler // 这里改为实际要连接的数据库地址
-PORT=3000                             // 项目运行端口
 ```
 
-4. 运行`yarn start`或`npm start`启动项目
+3. 运行`yarn dev`或`npm run dev`启动开发环境
+4. 运行`yarn build && yarn start`或`npm run build && npm start`启动生产环境
 
 ## APIs
 
