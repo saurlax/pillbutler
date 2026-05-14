@@ -1,20 +1,33 @@
 {
   "name": "pillbutler",
+  "private": true,
   "scripts": {
-    "start": "node main.js",
-    "build": "cd views && npm run build",
-    "i:yarn": "yarn & cd views && yarn",
-    "i:npm": "npm i & cd views && npm i"
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "^1.8.2",
-    "dotenv": "^16.0.1",
-    "koa": "^2.16.1",
-    "koa-bodyparser": "^4.3.0",
-    "koa-cors": "^0.0.16",
-    "koa-router": "^13.0.1",
-    "koa-static": "^5.0.0",
-    "moment": "^2.29.4",
-    "mongoose": "^8.9.5"
+    "antd-mobile": "^5.42.3",
+    "antd-mobile-icons": "^0.3.0",
+    "crypto-js": "^4.2.0",
+    "moment": "^2.30.1",
+    "mongoose": "^9.6.2",
+    "next": "16.2.6",
+    "react": "^19.2.6",
+    "react-amap": "^1.2.8",
+    "react-barcode-scanner": "^4.0.1",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.15.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^20.19.24",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.2.6",
+    "typescript": "^5.9.3"
   }
 }
